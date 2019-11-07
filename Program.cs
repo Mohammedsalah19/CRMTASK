@@ -28,12 +28,13 @@ namespace CRM
 
             //});
 
-            string phone = "MohammedS@yahoo.com";
-            string Emailformte = "{ telephone1 = " + phone + " }";
+            Console.WriteLine("Enter Your Email");
+            string Email = Console.ReadLine();
+            string Emailformte = "{ emailaddress1 = " + Email + " }";
             var query = (from contact in new OrganizationServiceContext(service).CreateQuery("contact")
                                select new
                                {
-                                   telephone1 = contact["emailaddress1"]
+                                   emailaddress1 = contact["emailaddress1"]
 
                                }).ToList();
 
@@ -59,7 +60,10 @@ namespace CRM
                 service.Create(new Entity("contact")
                 {
 
-                    ["emailaddress1"] = phone,
+                    ["emailaddress1"] = Email,
+                    ["firstname"] = "Mohammed",
+                    ["lastname"] = "Salah",
+                    ["telephone1"] = "01112754765",
 
                 });
 
